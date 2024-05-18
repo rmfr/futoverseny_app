@@ -1,10 +1,9 @@
 package hu.gde.runrace.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +13,8 @@ public class Competitions {
     @GeneratedValue(strategy = GenerationType.UUID) UUID competitionID;
     private String competitionName;
     private int distance;
+    @ManyToMany
+    private List<Competitions> competitions = new ArrayList<>();
 
     public Competitions() {
 
@@ -55,5 +56,9 @@ public class Competitions {
                 ", competitionName='" + competitionName + '\'' +
                 ", distance=" + distance +
                 '}';
+    }
+
+    public List<Competitions> getCompetitions() {
+        return competitions;
     }
 }

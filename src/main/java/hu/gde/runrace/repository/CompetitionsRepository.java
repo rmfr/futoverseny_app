@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface ComptetitionsRepository extends JpaRepository<Competitions, UUID> {
+public interface CompetitionsRepository extends JpaRepository<Competitions, UUID> {
 }

@@ -10,18 +10,19 @@ public class Results {
         @GeneratedValue(strategy = GenerationType.UUID) UUID resultsID;
         @ManyToOne
         private Runners runners;
-        @ManyToOne
+
+         @ManyToOne
         private Competitions competitions;
 
-        private int minuteTime;
+         private int minuteTime;
 
         public Results() {
 
                 }
-    public Results(Runners runners, Competitions competitions) {
+        public Results(Runners runners, Competitions competitions) {
         this.runners = runners;
         this.competitions = competitions;
-    }
+        }
 
         public UUID getResultsID() {
                 return resultsID;
@@ -43,14 +44,13 @@ public class Results {
                 return competitions;
         }
 
-        @Override
-        public String toString() {
-                return "Results{" +
-                        "resultsID=" + resultsID +
-                        ", runners=" + runners +
-                        ", competitions=" + competitions +
-                        ", minuteTime=" + minuteTime +
-                        '}';
+        public void setCompetitions(Competitions competitions) {
+            this.competitions = competitions;
         }
-}
-        ;
+        public void setMinuteTime(int minuteTime) {
+             this.minuteTime = minuteTime;
+             }
+        public int getMinuteTime() {
+            return minuteTime;
+             }
+};

@@ -25,7 +25,7 @@ public class RunnersController {
         return runnersService.getAllRunners();
     }
 
-    @PostMapping("addRunner")
+    @PostMapping("/addRunner")
     public Runners createRunner(@RequestBody Runners runners) {
         return runnersService.saveRunners(runners);
     }

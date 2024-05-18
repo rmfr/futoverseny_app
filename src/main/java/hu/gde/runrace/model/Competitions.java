@@ -13,8 +13,8 @@ public class Competitions {
     @GeneratedValue(strategy = GenerationType.UUID) UUID competitionID;
     private String competitionName;
     private int distance;
-    @ManyToMany
-    private List<Competitions> competitions = new ArrayList<>();
+    //@ManyToOne
+    //private List<Competitions> competitions = new ArrayList<>();
 
     public Competitions() {
 
@@ -58,7 +58,4 @@ public class Competitions {
                 '}';
     }
 
-    public List<Competitions> getCompetitions() {
-        return competitions;
-    }
 }

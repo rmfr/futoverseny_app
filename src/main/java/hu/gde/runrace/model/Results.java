@@ -8,10 +8,13 @@ import java.util.UUID;
 public class Results {
         private @Id
         @GeneratedValue(strategy = GenerationType.UUID) UUID resultsID;
-        @ManyToOne
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "runnerId")
         private Runners runners;
 
-         @ManyToOne
+         @ManyToOne(fetch = FetchType.LAZY)
+         @JoinColumn(name = "competitionId")
         private Competitions competitions;
 
          private int minuteTime;
@@ -19,9 +22,10 @@ public class Results {
         public Results() {
 
                 }
-        public Results(Runners runners, Competitions competitions) {
+        public Results(Runners runners, Competitions competitions, int minuteTime) {
         this.runners = runners;
         this.competitions = competitions;
+        this.minuteTime = minuteTime;
         }
 
         public UUID getResultsID() {
@@ -34,6 +38,10 @@ public class Results {
 
         public Runners getRunners() {
                 return runners;
+        }
+
+        public String getRunnersName() {
+                return runners.getName();
         }
 
         public void setRunners(Runners runners) {

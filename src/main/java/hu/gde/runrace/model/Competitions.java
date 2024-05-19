@@ -13,8 +13,12 @@ public class Competitions {
     @GeneratedValue(strategy = GenerationType.UUID) UUID competitionID;
     private String competitionName;
     private int distance;
-    //@ManyToOne
-    //private List<Competitions> competitions = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "competitions")
+    private List<Results> results;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "runnerId")
+    private Runners runners;
 
     public Competitions() {
 
@@ -58,4 +62,19 @@ public class Competitions {
                 '}';
     }
 
+    public List<Results> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Results> results) {
+        this.results = results;
+    }
+
+    public Runners getRunners() {
+        return runners;
+    }
+
+    public void setRunners(Runners runners) {
+        this.runners = runners;
+    }
 }

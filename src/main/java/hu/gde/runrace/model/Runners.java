@@ -14,6 +14,13 @@ public class Runners {
     private String gender;
     private int age;
 
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "runners")
+    private List<Competitions> competitions;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "runners")
+    private List<Results> results;
+
     public Runners() {
 
     }
@@ -56,6 +63,14 @@ public class Runners {
         this.age = age;
     }
 
+    public List<Competitions> getCompetitions() {
+        return competitions;
+    }
+
+    public void setCompetitions(List<Competitions> competitions) {
+        this.competitions = competitions;
+    }
+
     @Override
     public String toString() {
         return "Runners{" +
@@ -66,6 +81,13 @@ public class Runners {
                 '}';
     }
 
+    public List<Results> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Results> results) {
+        this.results = results;
+    }
 }
 
 

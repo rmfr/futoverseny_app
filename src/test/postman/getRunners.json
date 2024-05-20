@@ -1,0 +1,28 @@
+{
+	"info": {
+		"_postman_id": "e956dea9-6389-408a-809a-5b590144eebb",
+		"name": "gde_alk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35055283"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/getRunners",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getRunners",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getRunners"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

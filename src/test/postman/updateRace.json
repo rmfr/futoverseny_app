@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "e956dea9-6389-408a-809a-5b590144eebb",
+		"name": "gde_alk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35055283"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/addRunner",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"distance\" : 32,\n    \"competitionName\" : \"Rohanjunk\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/updateRace/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateRace",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

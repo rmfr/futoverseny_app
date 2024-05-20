@@ -2,15 +2,13 @@ package hu.gde.runrace.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+
 
 @Entity
 public class Runners {
     private @Id
-    @GeneratedValue(strategy = GenerationType.UUID) UUID runnerId;
+    @GeneratedValue(strategy = GenerationType.AUTO) long runnerId;
     private String name;
     private String gender;
     private int age;
@@ -30,11 +28,11 @@ public class Runners {
     }
 
 
-    public void setRunnerId(UUID runnerId) {
+    public void setRunnerId(long runnerId) {
         this.runnerId = runnerId;
     }
 
-    public UUID getRunnerId() {
+    public long getRunnerId() {
         return runnerId;
     }
 

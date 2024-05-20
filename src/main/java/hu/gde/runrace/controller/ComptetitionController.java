@@ -20,7 +20,7 @@ public class ComptetitionController {
     }
 
     @PutMapping("updateRace/{id}")
-        public Competitions updateRace(@RequestBody Competitions newCompetition, @PathVariable UUID id) {
+        public Competitions updateRace(@RequestBody Competitions newCompetition, @PathVariable Long id) {
         return competitionsRepository.findById(id)
                 .map(competitions -> {
                     competitions.setCompetitionName(newCompetition.getCompetitionName());
@@ -32,7 +32,7 @@ public class ComptetitionController {
 
 
     @GetMapping("/getRaceRunners/{id}")
-    public String getRaceRunners(@PathVariable UUID id, Model model, @RequestBody Results results) {
+    public String getRaceRunners(@PathVariable Long id, Model model, @RequestBody Results results) {
         Competitions race = competitionsRepository.findById(id)
                 .orElse(null);
         //Results res = resultRepository.findById(results.getResultsID()).orElse(null);

@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Competitions implements Serializable {
 
     private @Id
-    @GeneratedValue(strategy = GenerationType.UUID) UUID competitionID;
+    @GeneratedValue(strategy = GenerationType.AUTO) long competitionID;
     private String competitionName;
     private int distance;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "competitions")
@@ -27,11 +27,11 @@ public class Competitions implements Serializable {
         this.distance = distance;
     }
 
-    public UUID getCompetitionID() {
+    public long getCompetitionID() {
         return competitionID;
     }
 
-    public void setCompetitionID(UUID competitionID) {
+    public void setCompetitionID(long competitionID) {
         this.competitionID = competitionID;
     }
 

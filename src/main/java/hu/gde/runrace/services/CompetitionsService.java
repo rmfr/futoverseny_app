@@ -2,12 +2,14 @@ package hu.gde.runrace.services;
 
 import hu.gde.runrace.model.Competitions;
 import hu.gde.runrace.repository.CompetitionsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Service
 public class CompetitionsService {
+    @Autowired
     private final CompetitionsRepository competitionsRepository;
 
         public CompetitionsService(CompetitionsRepository competitionsRepository) {
@@ -25,4 +27,9 @@ public class CompetitionsService {
                     .orElseThrow(() -> new RuntimeException("Ilyen id-val nincs rögzítve verseny!"));
 
     }
+
+    public void addRace(String name, int distance) {
+        Competitions race = new Competitions(name, distance);
+        competitionsRepository.save(race);
+        }
 }

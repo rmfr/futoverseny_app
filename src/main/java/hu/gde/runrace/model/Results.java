@@ -3,12 +3,11 @@ package hu.gde.runrace.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 public class Results implements Serializable{
         private @Id
-        @GeneratedValue(strategy = GenerationType.UUID) UUID resultsID;
+        @GeneratedValue(strategy = GenerationType.AUTO) long resultsID;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "runnerId")
@@ -29,11 +28,11 @@ public class Results implements Serializable{
         this.minuteTime = minuteTime;
         }
 
-        public UUID getResultsID() {
+        public long getResultsID() {
                 return resultsID;
         }
 
-        public void setResultsID(UUID resultsID) {
+        public void setResultsID(long resultsID) {
                 this.resultsID = resultsID;
         }
 

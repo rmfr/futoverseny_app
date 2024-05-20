@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -15,8 +16,6 @@ public class Runners {
     private int age;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "runners")
-    private List<Competitions> competitions;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "runners")
     private List<Results> results;
@@ -63,13 +62,6 @@ public class Runners {
         this.age = age;
     }
 
-    public List<Competitions> getCompetitions() {
-        return competitions;
-    }
-
-    public void setCompetitions(List<Competitions> competitions) {
-        this.competitions = competitions;
-    }
 
     @Override
     public String toString() {
@@ -88,6 +80,7 @@ public class Runners {
     public void setResults(List<Results> results) {
         this.results = results;
     }
+
 }
 
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Megrendezett versenyek</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Versenyek listája</h1>
+    <table>
+        <tr>
+            <th>Verseny neve</th>
+            <th>Távolság (km)</th>
+        </tr>
+        <tbody th:each="race : ${races}">
+        <tr>
+            <td th:text="${race.competitionName}"></td>
+            <td th:text="${race.distance}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

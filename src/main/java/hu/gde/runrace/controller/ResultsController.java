@@ -1,19 +1,40 @@
 package hu.gde.runrace.controller;
 
-import hu.gde.runrace.repository.ResultsRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import hu.gde.runrace.model.ResultDTO;
+import hu.gde.runrace.services.ResultsService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ResultsController {
 
-    private final ResultsRepository resultsRepository;
+    private final ResultsService resultsService;
 
-    public ResultsController(ResultsRepository resultsRepository) {
-        this.resultsRepository = resultsRepository;
+
+    public ResultsController(ResultsService resultsService) {
+        this.resultsService = resultsService;
     }
 
+@   PostMapping("/addResult")
+    public ResponseEntity<String> addResult(@RequestBody ResultDTO resultDTO) {
+        try {
+            resultsService.addResult(resultDTO);
+            return ResponseEntity.ok("Az eredmény sikeresen hozzá lett adva.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Hiba történt az eredmény hozzáadása közben: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/getAverageTime/{raceId}")
+    public ResponseEntity<Double> getAverageTime(@PathVariable UUID raceId) {
+        try {
+            double averageTime = resultsService.calculateAverageTimeForRace(raceId);
+            return ResponseEntity.ok(averageTime);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 }

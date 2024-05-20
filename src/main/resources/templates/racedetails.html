@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Versenyeredmények</title>
+</head>
+<body>
+<h1>Versenyzők eredményei</h1>
+<table>
+    <tr>
+            <th>Versenyző neve</th>
+            <th>Verseny neve</th>
+            <th>Elért eredmény</th>
+    </tr>
+    <tbody th:each ="det : ${runnerResults}">
+    <tr>
+        <td th:text="${det.getRaceName()}"></td>
+        <td th:text="${det.getRunnerName()}"></td>
+        <td style="text-align:center;" th:text="${det.getMinTime()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

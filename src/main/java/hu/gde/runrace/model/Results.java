@@ -2,10 +2,11 @@ package hu.gde.runrace.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-public class Results {
+public class Results implements Serializable{
         private @Id
         @GeneratedValue(strategy = GenerationType.UUID) UUID resultsID;
 
@@ -46,6 +47,10 @@ public class Results {
 
         public void setRunners(Runners runners) {
                 this.runners = runners;
+        }
+
+        public String getCompetitionName() {
+                return competitions.getCompetitionName();
         }
 
         public Competitions getCompetitions() {

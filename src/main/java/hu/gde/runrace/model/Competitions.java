@@ -2,12 +2,13 @@ package hu.gde.runrace.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Competitions {
+public class Competitions implements Serializable {
 
     private @Id
     @GeneratedValue(strategy = GenerationType.UUID) UUID competitionID;
@@ -16,9 +17,6 @@ public class Competitions {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "competitions")
     private List<Results> results;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "runnerId")
-    private Runners runners;
 
     public Competitions() {
 
@@ -70,11 +68,5 @@ public class Competitions {
         this.results = results;
     }
 
-    public Runners getRunners() {
-        return runners;
-    }
 
-    public void setRunners(Runners runners) {
-        this.runners = runners;
-    }
 }

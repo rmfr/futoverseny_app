@@ -32,4 +32,5 @@ public class CompetitionsService {
         Competitions race = new Competitions(name, distance);
         competitionsRepository.save(race);
         }
+
 }

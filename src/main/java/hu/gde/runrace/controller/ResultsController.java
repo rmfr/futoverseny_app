@@ -29,7 +29,7 @@ public class ResultsController {
     }
 
     @GetMapping("/getAverageTime/{raceId}")
-    public ResponseEntity<Double> getAverageTime(@PathVariable UUID raceId) {
+    public ResponseEntity<Double> getAverageTime(@PathVariable long raceId) {
         try {
             double averageTime = resultsService.calculateAverageTimeForRace(raceId);
             return ResponseEntity.ok(averageTime);

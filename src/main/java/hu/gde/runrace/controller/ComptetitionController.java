@@ -1,22 +1,23 @@
 package hu.gde.runrace.controller;
 
 import hu.gde.runrace.model.Competitions;
-import hu.gde.runrace.model.Results;
+import hu.gde.runrace.model.RunnerResultDto;
 import hu.gde.runrace.repository.CompetitionsRepository;
-import org.springframework.ui.Model;
+import hu.gde.runrace.services.RunnersService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @RestController
 public class ComptetitionController {
 
     private final CompetitionsRepository competitionsRepository;
+    private final RunnersService runnersService;
 
-    public ComptetitionController( CompetitionsRepository competitionsRepository) {
+    public ComptetitionController(CompetitionsRepository competitionsRepository, RunnersService runnersService) {
         this.competitionsRepository = competitionsRepository;
+        this.runnersService = runnersService;
     }
 
     @PutMapping("updateRace/{id}")
@@ -32,23 +33,12 @@ public class ComptetitionController {
 
 
     @GetMapping("/getRaceRunners/{id}")
-    public String getRaceRunners(@PathVariable Long id, Model model, @RequestBody Results results) {
-        Competitions race = competitionsRepository.findById(id)
-                .orElse(null);
-        //Results res = resultRepository.findById(results.getResultsID()).orElse(null);
-        ArrayList<Results> result = new ArrayList<>(race.getResults());
+    public List<RunnerResultDto> getRaceRunnerById(@PathVariable long id){
 
-        List<String> runnerName = result.stream().map(Results::getRunnersName)
-                .collect(Collectors.toList());
-        List<Integer> runMin = result.stream().map(Results::getMinuteTime)
-                .collect(Collectors.toList()).reversed();
-       // Map<List<String>, List<Integer>> rr = Map.of(runner, runmin);
-
-        model.addAttribute("Futó neve", runnerName);
-        model.addAttribute("Elért idő", runMin);
-        //model.addAttribute("egyben", rr);
-        return model.toString();
-
+        List<RunnerResultDto> runners = runnersService.getAllRunnerResultsById(id);
+        return runners;
     }
+
+
 
 }

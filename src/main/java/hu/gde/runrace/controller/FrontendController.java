@@ -36,6 +36,8 @@ public class FrontendController {
         model.addAttribute("races", races);
         return "races";
     }
+
+
     @GetMapping("/raceDetails")
     public String showRaceDetails(Model model) {
         List<RunnerResultDto> runnerResults = runnersService.getAllRunnerResults();

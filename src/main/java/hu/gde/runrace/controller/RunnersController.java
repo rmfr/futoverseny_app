@@ -1,5 +1,7 @@
 package hu.gde.runrace.controller;
 
+import hu.gde.runrace.model.Competitions;
+import hu.gde.runrace.model.RunnerResultDto;
 import hu.gde.runrace.model.Runners;
 import hu.gde.runrace.services.RunnersService;
 import org.springframework.web.bind.annotation.*;

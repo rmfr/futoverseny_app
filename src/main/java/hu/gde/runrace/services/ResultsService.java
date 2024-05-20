@@ -28,7 +28,7 @@ public class ResultsService {
         resultsRepository.save(result);
     }
 
-        public double calculateAverageTimeForRace(UUID raceId) {
+        public double calculateAverageTimeForRace(long raceId) {
 
         List<Results> results = resultsRepository.findAll();
         double totalTime = 0;
